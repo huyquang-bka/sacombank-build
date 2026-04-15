@@ -1,0 +1,31 @@
+BASE_HOST: "http://192.168.1.144:42066"
+URI: "/Service/api"
+
+#API config
+URI_CONFIG: "/Service/api/device?page=1&itemsPerPage=999"
+URI_FACE: "/Service/api/event"
+
+#API Token
+URI_TOKEN: "/Service/api/token/auth"
+PAYLOAD_TOKEN:
+  {
+    "grant_type": "password",
+    "client_id": "IAC_Cloud",
+    "client_secret": "1a82f1d60ba6353bb64a8fb4b05e4bc4",
+    "username": "sacombank",
+    "password": "Ab@123456",
+  }
+
+#TIME
+TIMEOUT: 10
+TIME_TOKEN: 600
+OVERLAP_TIME: 300
+TIME_TO_GET_CAM: 10
+
+#FACE FEATURE ID
+FACE_FEATURE_ID: "1"
+
+#STREAM
+IS_STREAM: true
+STREAM_URL: "rtmp://192.168.1.144:1935/CAHN"
+STREAM_SIZE: [1280, 720]
