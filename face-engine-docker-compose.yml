@@ -1,0 +1,21 @@
+services:
+  sacombank-face-engine:
+    image: huyquang/face-engine:base
+    container_name: sacombank-face-engine
+    restart: always
+    working_dir: /project
+    command: /bin/bash -lc "chmod +x /project/face-engine.bin && ./face-engine.bin"
+    volumes:
+      - ./:/project
+    network_mode: host
+    deploy:
+      resources:
+        limits:
+          cpus: "8"
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0"]
+              capabilities: [gpu]
+    env_file:
+      - resources/.env
