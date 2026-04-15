@@ -18,21 +18,13 @@ x-deepstream-service: &deepstream-service
     - SERVER_ID=19
 
 services:
-  sacombank-ds-t1:
+  tg:
     <<: *deepstream-service
-    container_name: sacombank-ds-t1
+    container_name: tg
     environment:
       - TZ=Asia/Ho_Chi_Minh
-      - SERVER_ID=19
-      - AREA_CODE=ATIN_T1
-
-  sacombank-ds-t2:
-    <<: *deepstream-service
-    container_name: sacombank-ds-t2
-    environment:
-      - TZ=Asia/Ho_Chi_Minh
-      - SERVER_ID=19
-      - AREA_CODE=ATIN_T2
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_G
 
   sacombank-camera-status:
     image: huyquang/deepstream-app:8.0
@@ -44,4 +36,93 @@ services:
       - ./:/project
     environment:
       - TZ=Asia/Ho_Chi_Minh
-      - SERVER_ID=19
+      - SERVER_ID=10
+
+  t1:
+    <<: *deepstream-service
+    container_name: t1
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_1
+
+
+
+  t2:
+    <<: *deepstream-service
+    container_name: t2
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_2
+
+
+  t3:
+    <<: *deepstream-service
+    container_name: t3
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_3
+
+  t4:
+    <<: *deepstream-service
+    container_name: t4
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_4
+
+
+  t5:
+    <<: *deepstream-service
+    container_name: t5
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_5
+
+  t6:
+    <<: *deepstream-service
+    container_name: t6
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_6
+
+
+  t7:
+    <<: *deepstream-service
+    container_name: t7
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_7
+
+
+  t8:
+    <<: *deepstream-service
+    container_name: t8
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_8
+
+  t9:
+    <<: *deepstream-service
+    container_name: t9
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_9
+
+
+  t10:
+    <<: *deepstream-service
+    container_name: t10
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_10
+
+
