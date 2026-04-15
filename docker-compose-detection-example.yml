@@ -1,0 +1,47 @@
+x-deepstream-service: &deepstream-service
+  image: huyquang/deepstream-app:8.0
+  working_dir: /project
+  command: python3 -u main.py
+  restart: always
+  network_mode: host
+  volumes:
+    - ./:/project
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            device_ids: ["0"]
+            capabilities: [ gpu ]
+  environment:
+    - TZ=Asia/Ho_Chi_Minh
+    - SERVER_ID=19
+
+services:
+  sacombank-ds-t1:
+    <<: *deepstream-service
+    container_name: sacombank-ds-t1
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=19
+      - AREA_CODE=ATIN_T1
+
+  sacombank-ds-t2:
+    <<: *deepstream-service
+    container_name: sacombank-ds-t2
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=19
+      - AREA_CODE=ATIN_T2
+
+  sacombank-camera-status:
+    image: huyquang/deepstream-app:8.0
+    working_dir: /project
+    command: python3 -u check_camera_on_off.py
+    restart: always
+    network_mode: host
+    volumes:
+      - ./:/project
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=19
