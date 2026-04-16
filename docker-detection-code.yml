@@ -1,0 +1,272 @@
+x-deepstream-service: &deepstream-service
+  image: huyquang/deepstream-app:8.0
+  working_dir: /project
+  command: python3 -u main.py
+  restart: always
+  network_mode: host
+  volumes:
+    - ./:/project
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            device_ids: ["0"]
+            capabilities: [ gpu ]
+  environment:
+    - TZ=Asia/Ho_Chi_Minh
+    - SERVER_ID=19
+
+services:
+  tg:
+    <<: *deepstream-service
+    container_name: tg
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_G
+
+  sacombank-camera-status:
+    image: huyquang/deepstream-app:8.0
+    working_dir: /project
+    command: python3 -u check_camera_on_off.py
+    restart: always
+    network_mode: host
+    volumes:
+      - ./:/project
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+  t1:
+    <<: *deepstream-service
+    container_name: t1
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_1
+
+
+
+  t2:
+    <<: *deepstream-service
+    container_name: t2
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_2
+
+
+  t3:
+    <<: *deepstream-service
+    container_name: t3
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_3
+
+  t4:
+    <<: *deepstream-service
+    container_name: t4
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_4
+
+
+  t5:
+    <<: *deepstream-service
+    container_name: t5
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_5
+
+  t6:
+    <<: *deepstream-service
+    container_name: t6
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_6
+
+
+  t7:
+    <<: *deepstream-service
+    container_name: t7
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_7
+
+
+  t8:
+    <<: *deepstream-service
+    container_name: t8
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_8
+
+  t9:
+    <<: *deepstream-service
+    container_name: t9
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_9
+
+
+  t10:
+    <<: *deepstream-service
+    container_name: t10
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=10
+      - AREA_CODE=HO_NKKN_TANG_10
+
+
+
+#ntmk
+  ntmk-t1:
+    <<: *deepstream-service
+    container_name: ntmk-t1
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_1
+
+  ntmk-t2:
+    <<: *deepstream-service
+    container_name: ntmk-t2
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_2
+
+  ntmk-t3:
+    <<: *deepstream-service
+    container_name: ntmk-t3
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_3
+
+  ntmk-t4:
+    <<: *deepstream-service
+    container_name: ntmk-t4
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_4
+
+  ntmk-t5:
+    <<: *deepstream-service
+    container_name: ntmk-t5
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_5
+
+  ntmk-t6:
+    <<: *deepstream-service
+    container_name: ntmk-t6
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_6
+
+  ntmk-t7:
+    <<: *deepstream-service
+    container_name: ntmk-t7
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_7
+
+  ntmk-t8:
+    <<: *deepstream-service
+    container_name: ntmk-t8
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_8
+
+  ntmk-t9:
+    <<: *deepstream-service
+    container_name: ntmk-t9
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_9
+
+  ntmk-t10:
+    <<: *deepstream-service
+    container_name: ntmk-t10
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_10
+
+  ntmk-t11:
+    <<: *deepstream-service
+    container_name: ntmk-t11
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_11
+
+  ntmk-t12:
+    <<: *deepstream-service
+    container_name: ntmk-t12
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_12
+
+  ntmk-t13:
+    <<: *deepstream-service
+    container_name: ntmk-t13
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_13
+
+  ntmk-t14:
+    <<: *deepstream-service
+    container_name: ntmk-t14
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_14
+
+  ntmk-t15:
+    <<: *deepstream-service
+    container_name: ntmk-t15
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_15
+
+  ntmk-t16:
+    <<: *deepstream-service
+    container_name: ntmk-t16
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_16
+
+  ntmk-t17:
+    <<: *deepstream-service
+    container_name: ntmk-t17
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_17
+
+  ntmk-t18:
+    <<: *deepstream-service
+    container_name: ntmk-t18
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - SERVER_ID=11
+      - AREA_CODE=HO_NTMK_TANG_18
